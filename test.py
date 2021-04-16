@@ -1,2 +1,3 @@
-from Dictionary.Dictionary import Dictionary
-from WordNet.TestNet import  WordNet
+from Dictionary import Dictionary
+from TestNet import  WordNet
+
