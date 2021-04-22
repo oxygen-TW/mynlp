@@ -4,7 +4,7 @@ import logging
 from bs4 import BeautifulSoup
 import re
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 class Crawler(CrawlerNetwork):
     def __init__(self):
@@ -39,7 +39,7 @@ class Crawler(CrawlerNetwork):
         soup = BeautifulSoup(text, 'html.parser')
         pushTag = soup.find_all(class_="f3 push-content")
 
-        commentsList = [item.text for item in pushTag]
+        commentsList = [item.text.replace(": ", "") for item in pushTag]
         for item in commentsList:
             logging.debug(item)
 
@@ -55,4 +55,10 @@ class Crawler(CrawlerNetwork):
 if __name__ == "__main__":
     C = Crawler()
     #C.getArticleComments("https://www.ptt.cc/bbs/Gossiping/M.1619097885.A.79D.html")
-    C.getBoardAllArticleURL("https://www.ptt.cc/bbs/Gossiping/index.html") #目前只能爬一頁
+    urlList = C.getBoardAllArticleURL("https://www.ptt.cc/bbs/Gossiping/index39303.html") #目前只能爬一頁
+
+    for url in urlList:
+        r = C.getArticleComments("https://www.ptt.cc" + url)
+        print("Source:", url)
+        for item in r:
+            print(item)
