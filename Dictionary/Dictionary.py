@@ -1,7 +1,7 @@
 import re 
 
 class Dictionary:
-    def __init__(self, corpusPath="myfile.utf8"):
+    def __init__(self, corpusPath="./Dictionary/myfile.utf8"):
         self.__regularExpressionRule = re.compile(r"[^a-zA-Z0-9\u3000\u4e00-\u9fa5]")
         self.__totalTimeInOneGram = 0 ;
         self.__totalTimeInTwoGram = 0 ;

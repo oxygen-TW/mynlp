@@ -1,10 +1,9 @@
 from Dictionary.Dictionary import Dictionary 
-from WordNet.WordNet import WordNet
+from WordNet.WordNet_v_1_1 import WordNet
 
 if __name__ == '__main__':
-    word = WordNet(Dictionary("TestSet.utf8"))
-
-    while  1 :
+    word = WordNet(Dictionary())
+    while 1:
         try: 
             print("=================================")
             string = input("請輸入句子(輸入end結束):")
@@ -14,6 +13,6 @@ if __name__ == '__main__':
             word.print_Sentence()
             num=int(input("需要輸出運算的資料嗎(1代表需要):"))
             if num == 1 :
-                word.print_Word_Data()
+                word.print_Net_Data()
         except Exception as e :
             print(e)
